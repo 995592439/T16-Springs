@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spring-aop-3.2.13.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-aop-3.2.13.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

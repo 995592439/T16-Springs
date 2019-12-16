@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--为userDao对象添加实例（bean）-->
+    <!--创建dao层bean对象-->
+    <bean id="userdao" class="dao.UserDaoImpl"/>
+    <!--为service层userDao对象添加dao层的bean实例-->
+    <bean id="userService" class="service.UserServiceImpl">
+        <property name="userDao" ref="userdao"/>
+    </bean>
+    <!--声明增强处理类的bean元素-->
+    <bean id="logger" class="util.Loggers"/>
+    <!--配置切面-->
+    <!--aop的根节点-->
+         <aop:config>
+             <!--定义切入点 id:取的别名，expression表达式-->
+            <aop:pointcut id="pointcut"
+                          expression="execution(public  boolean  get*(*))"/>
+              <!--开始织入，定义切面-->
+             <aop:aspect ref="logger">
+                 <!--前置增强,method:z指定切面的方法名 pointcut-ref:指定切入点-->
+                 <aop:before method="before" pointcut-ref="pointcut"/>
+                 <!--后置增强-->
+                 <aop:after-returning method="afterReturning"
+                                      pointcut-ref="pointcut" returning="result"/>
+             </aop:aspect>
+         </aop:config>
+</beans>

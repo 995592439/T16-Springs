@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <!--bean标签是用来注入对象实例，
+                   id：是别名，唯一，class：指定需要注入的类-->
+    <bean id="gazi" class="test.Spring">
+        <!--property：为属性赋值，name：指定那个属性，value：赋值-->
+        <property name="who" value="嘎子"/><!--设值注入，要求要有set方法-->
+        <property name="text" value="三天不打鬼子，手就痒痒"></property>
+
+    </bean>
+    <bean id="rod" class="test.Spring">
+        <!--property：为属性赋值，name：指定那个属性，value：赋值-->
+        <property name="who" value="Rod"/>
+        <property name="text" value="世界上有一种人，就爱吹牛逼，就是上面这吊毛叫嘎子的"></property>
+
+    </bean>
+</beans>
